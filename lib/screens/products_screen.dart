@@ -1,3 +1,4 @@
+import 'package:ammshop/data/dummydata.dart';
 import 'package:flutter/material.dart';
 
 class ProductsScreen extends StatelessWidget {
@@ -18,7 +19,23 @@ class ProductsScreen extends StatelessWidget {
               crossAxisSpacing: 5,
               mainAxisSpacing: 5),
           itemBuilder: (ctx, index) {
-            return const Card(child: Text('Hello world'));
+            return Card(
+              child: Column(
+                children: [
+                  Image.network(itemlist[index].imageurl),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(itemlist[index].name),
+                      Text('$itemlist[index].amount'),
+                    ],
+                  ),
+                  IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.shopping_cart)),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.favorite))
+                ],
+              ),
+            );
           }),
     );
   }
